@@ -1,14 +1,21 @@
 package com.rideshare.trip_service;
+
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/trip")
 public class TripController {
 
+    @Autowired
+    private TripService tripService;
+
     @PostMapping("/request-trip")
     public String requestTrip(@RequestBody RideRequest rideRequest) {
         System.out.println("Received trip request: " + rideRequest);
-        return rideRequest.toString();
+        rideRequest.setStatus("Requested");
+        tripService.saveRideRequest(rideRequest);
+        return "Trip requested successfully with status: Requested";
     }
 
     @PostMapping("/start-matching")

@@ -7,6 +7,7 @@ public class RideRequest {
     private String pickUpLongitude;
     private String pickUpLatitude;
     private String riderId;
+    private String status;
 
     @JsonCreator
     public RideRequest(
@@ -44,12 +45,21 @@ public class RideRequest {
         this.riderId = riderId;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "RideRequest{" +
                 "pickUpLongitude='" + pickUpLongitude + '\'' +
                 ", pickUpLatitude='" + pickUpLatitude + '\'' +
                 ", riderId='" + riderId + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

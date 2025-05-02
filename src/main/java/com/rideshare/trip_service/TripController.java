@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.*;
 public class TripController {
 
     @PostMapping("/request-trip")
-    public String requestTrip() {
-        System.out.println("Trip requested");
-        return "Trip requested";
+    public String requestTrip(@RequestBody RideRequest rideRequest) {
+        System.out.println("Received trip request: " + rideRequest);
+        return rideRequest.toString();
     }
 
     @PostMapping("/start-matching")
